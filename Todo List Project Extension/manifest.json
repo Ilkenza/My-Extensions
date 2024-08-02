@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Todo List Project Extension",
+  "version": "1.0",
+  "description": "A simple to-do list extension",
+  "permissions": ["activeTab"],
+  "icons": {
+    "48": "icon extension 128x128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon extension 16x16.png",
+      "48": "icon extension 48x48.png",
+      "128": "icon extension 128x128.png"
+    }
+  }
+}

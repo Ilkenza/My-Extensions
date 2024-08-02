@@ -1,0 +1,436 @@
+body {
+  width: 500px;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+::-webkit-scrollbar {
+  width: 0.625rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #6cbafa;
+  border: 1px solid #181818;
+  border-radius: 0.625rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #181818;
+}
+
+h1 {
+  font-size: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+  background-color: #f2f2f2;
+  padding: 10px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input {
+  padding: 10px;
+  border-radius: 4px;
+}
+
+textarea {
+  margin: 5px 10px;
+  resize: none;
+}
+
+/* --------- header ---------- */
+.header {
+  background-color: #171717;
+  text-align: center;
+  color: #f4f6fc;
+  padding: 10px;
+  border-bottom: 1px solid #6cbafa;
+}
+
+.btnn {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+.cta {
+  position: relative;
+  padding: 9.5px 10px;
+  transition: all 0.2s ease;
+  border: 2px solid #6cbafa;
+  border-radius: 50px;
+  background: #6cbafa;
+}
+
+#backArrow {
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  cursor: pointer;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.cta:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-radius: 50px;
+  background: white;
+  width: 36px;
+  height: 36px;
+  transition: all 0.8s ease;
+}
+
+.cta span {
+  position: relative;
+  font-size: 18px;
+  color: white;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-left: 10px;
+}
+
+.cta svg {
+  position: relative;
+  top: 0;
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: white;
+  stroke-width: 2;
+  transform: translateX(6px);
+  transition: all 0.5s ease;
+}
+
+.cta:hover:before {
+  width: 100%;
+  background: #171717;
+}
+
+.cta:hover svg {
+  transform: translateX(0);
+  transition: all 2s ease;
+}
+
+.cta:active {
+  transform: scale(0.95);
+  transition: all 2s ease;
+}
+
+#projectTasks,
+#projects {
+  margin-bottom: 0.625rem;
+  padding: 10px 10px 0px 10px;
+}
+
+#taskInputbutton,
+.input-container {
+  display: flex;
+}
+
+#taskInput,
+#projectNameInput {
+  outline: none;
+  margin-right: 10px;
+  width: 80%;
+  border: 2px solid #6cbafa;
+  cursor: text;
+  transition: 0.5s;
+  color: #6cbafa;
+}
+#taskInput:focus,
+#projectNameInput:focus {
+  box-shadow: 0px 0px 15px #6cbafa;
+  transition: 0.5s;
+  transition-property: box-shadow;
+  outline: #6cbafa;
+  border: 2px solid #6cbafa;
+  color: #6cbafa;
+}
+
+.task-input,
+.project-input {
+  width: 350px;
+  border: 0;
+  background-color: transparent;
+  outline: none;
+  color: #181818;
+}
+
+.project-input[readonly] {
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.project-input.editing,
+.task-input.editing {
+  cursor: text;
+  color: #6cbafa;
+  transition: color 0.2s ease-in-out;
+}
+
+#addTask,
+#addProject {
+  width: 100%;
+  padding: 8px;
+  background: transparent;
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  border: 2px solid #6cbafa;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  color: #6cbafa;
+  transition: color 0.3s 0.1s ease-out;
+  text-align: center;
+}
+
+#addTask::before,
+#addProject::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  content: "";
+  border-radius: 50%;
+  display: block;
+  width: 20em;
+  height: 20em;
+  left: -5em;
+  text-align: center;
+  transition: box-shadow 0.5s ease-out;
+  z-index: -1;
+}
+
+#addTask:hover,
+#addProject:hover {
+  color: #fff;
+  border: 2px solid #6cbafa;
+}
+
+#addTask:hover::before,
+#addProject:hover::before {
+  box-shadow: inset 0 0 0 10em #6cbafa;
+}
+
+#addProject,
+#addTask {
+  width: 20%;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.task-item.scale-in {
+  animation: scaleIn 0.3s forwards;
+}
+
+.task-item.scale-out {
+  animation: scaleOut 0.3s forwards;
+}
+
+.task-container,
+.project-icons,
+.project-container {
+  display: flex;
+  align-items: center;
+}
+
+.check-container input {
+  display: none;
+}
+
+.check-container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 19px;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.task-checkbox {
+  margin-right: 10px;
+}
+
+.task-checkmark {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 0.9em;
+  width: 0.9em;
+  background-color: transparent;
+  border-radius: 0.2em;
+  transition: all 0.25s;
+}
+
+.check-container input:checked ~ .task-checkmark {
+  background-color: #48ff00;
+}
+
+.task-checkmark:after {
+  content: "";
+  position: absolute;
+  transform: rotate(0deg);
+  border: 0.1em solid #6cbafa;
+  left: 0;
+  top: 0;
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 0.2em;
+  transition: all 0.4s, border-width 0.1s;
+}
+
+.check-container input:checked ~ .task-checkmark:after {
+  left: 0.3em;
+  top: 0.1em;
+  width: 0.2em;
+  height: 0.4em;
+  border-color: white white white transparent;
+  border-width: 0 0.15em 0.15em 0;
+  border-radius: 0em;
+  transform: rotate(45deg);
+}
+
+.icons {
+  width: 60px;
+}
+
+.icons i {
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.edit,
+.delete,
+.done-task {
+  color: #6cbafa;
+}
+
+.edit,
+.delete {
+  cursor: pointer;
+  margin-left: 10px;
+}
+.edit {
+  color: rgb(0, 89, 255);
+}
+
+.delete,
+.cancel-edit {
+  color: rgb(255, 29, 29);
+}
+
+.confirm-edit {
+  color: green;
+}
+
+#completedTasksContainer,
+#completedProjectsContainer {
+  margin: 0px 10px;
+  flex-direction: column;
+}
+
+#completedTasksHeader,
+#completedProjectsHeader {
+  cursor: pointer;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 110px;
+  letter-spacing: 0.5px;
+}
+
+#toggleCompleted,
+#toggleCompletedProjects {
+  margin-left: 3px;
+  display: inline-block;
+}
+
+.arrow-transition {
+  transition: transform 0.3s ease;
+}
+
+.up {
+  transform: rotate(180deg);
+}
+
+.down {
+  transform: rotate(0deg);
+}
+
+#completedTaskList,
+#completedProjectList {
+  margin: 0;
+  overflow: hidden;
+  transition: height 0.3s ease, opacity 0.3s ease;
+}
+
+.task-input {
+  cursor: text;
+  transition: color 0.2s ease-in-out;
+}
+
+.hidden {
+  height: 0;
+  opacity: 0;
+}
+
+.visible {
+  height: auto;
+  opacity: 1;
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+}

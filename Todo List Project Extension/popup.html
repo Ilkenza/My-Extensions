@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List Project Extension</title>
+    <link rel="stylesheet" href="popup.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <script defer src="popup.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="btnn">
+                <button class="cta" id="backArrow">
+                    <svg viewBox="0 0 13 10" height="20px" width="20px">
+                        <path d="M12,5 L2,5"></path>
+                        <polyline points="5 9 1 5 5 1"></polyline>
+                    </svg>
+                    <span>Back</span>
+                </button>
+            </div>
+
+            <h1 id="headerTitle">Projects</h1>
+        </div>
+        <div id="projects">
+            <div class="input-container">
+                <input type="text" id="projectNameInput" placeholder="Enter a new project" class="project-input" />
+                <button id="addProject">
+                    <span>Add Project</span>
+                </button>
+            </div>
+            <ul id="projectList"></ul>
+        </div>
+        <div id="completedProjectsContainer" style="display: none">
+            <span id="completedProjectsHeader">
+                <span id="completedcount">
+                    Completed (<span id="completedProjectsCount">0</span>)
+                </span>
+                <i id="toggleCompletedProjects" class="fas fa-chevron-up up arrow-transition"></i>
+            </span>
+            <ul id="completedProjectList" class="hidden"></ul>
+        </div>
+
+        <div id="projectTasks" style="display: none">
+            <div id="taskInputbutton">
+                <input type="text" id="taskInput" placeholder="Enter a new task" class="task-input" />
+                <button id="addTask">
+                    <span>Add Task</span>
+                </button>
+            </div>
+            <ul id="taskList"></ul>
+        </div>
+
+        <div id="completedTasksContainer" style="display: none">
+            <span id="completedTasksHeader">
+                <span id="completedcount">
+                    Completed (<span id="completedCount">0</span>)
+                </span>
+                <i class="fas fa-chevron-down arrow-transition" id="toggleCompleted"></i>
+            </span>
+            <ul id="completedTaskList" class="hidden"></ul>
+        </div>
+    </div>
+</body>
+
+</html>
